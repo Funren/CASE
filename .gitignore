@@ -1,3 +1,4 @@
 # npm 包文件
 /node_modules
+**/node_modules
 /dist

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="fastCanvas.js"></script>
+    <title>Document</title>
+    <style>
+        #imgBox {
+            background: #fff;
+            width:500px;
+            overflow: hidden;
+        }
+
+        #imgBox img {
+            background:#000;
+            border:none;
+            float: left;
+            width:240px;
+            height: 130px;
+            margin:5px;
+            padding:0;
+        }
+
+        .box {
+            height:100px;
+        }
+        .box span {
+            /* tarnsform:tarnsform(-50%,-50%); */
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="imgBox">
+        <img src="img/1.png" alt="">
+        <img src="img/2.png" alt="">
+        <img src="img/3.png" alt="">
+        <img src="img/4.png" alt="">
+        <img src="img/5.png" alt="">
+        <img src="img/6.png" alt="">
+    </div>
+
+     <div class="box" style="background:red;">
+        <span>123456789123456789</span>
+    </div>
+
+</body>
+
+<script>
+    // #detail 为需要生成为图片的dom元素
+    fastcanvas($("#imgBox"), {
+        useCORS: true,//允许使用跨域图片资源
+        background: '#fff',
+        onrendered: function (canvas) {
+            // 创建一个新画板将图片插入
+            document.body.appendChild(canvas);
+
+            $("canvas").attr('id', 'canvas');
+            //获取生成好的图片64编码
+            var base64Img = canvas.toDataURL('image/jpeg', '1');
+            $("#imgBox").hide()
+        },
+    });
+
+
+    $(function(){
+
+    })
+</script>
+</html>
